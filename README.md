@@ -44,9 +44,9 @@ from LeanVolumeInterpolator import LeanVolumeInterpolator
 test_vol = np.random.rand((100,100,100))
 
 # Initialize the interpolator
-# - if input coordinates are outside the volume, np.nan will be used for extrapolation.
-# - The inner interpolation and output will be using np.float32
-# - since we are not using sparse volumes, no need to convert to dense.
+# * if input coordinates are outside the volume, np.nan will be used for extrapolation.
+# * the inner interpolation and output will be using np.float32
+# * since we are not using sparse volumes, no need to convert to dense.
 lean_interp = LeanVolumeInterpolator(test_vol, extrap_val=np.nan, dtype=np.float32, to_dense=False)
 
 # Single coordinate interpolation
