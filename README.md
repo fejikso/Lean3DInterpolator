@@ -3,6 +3,8 @@
 ## Description
 LeanVolumeInterpolator is a Python class designed for efficient trilinear interpolation of 3D volumetric data. It is an alternative to scipy.interpolate.RegularGridInterpolator, which does not work well large datasets stored as numpy memmaps, sparse 3D volumes, and compressed HDF5 datasets.
 
+I needed to perform arbitrary two-dimensional slices on a 3D volume and I needed something efficient.
+
 ### Background and Motivation
 The development of LeanVolumeInterpolator was inspired by limitations encountered with `scipy.interpolate.RegularGridInterpolator` in handling certain 3D data structures. Specifically, I found the following problems:
 
@@ -15,10 +17,10 @@ It should work with other 3D array-like structures that allow slicing.
 As I encountered in some applications, this makes LeanVolumeInterpolator a more suitable choice for applications dealing with large or complex 3D volumetric data, where memory efficiency and flexibility are key concerns.
 
 ## Features
-- Efficient trilinear interpolation on 3D volumes. Calls to the underlying volume are vectorized, so it's very efficient.
+- Efficient trilinear interpolation on 3D volumes. Calls to the underlying volume are vectorized, so calls are very efficient.
 - Supports various data types including numpy arrays, memmaps, and sparse volumes.
 - Customizable constant extrapolation values (when input coordinates are outside the volume).
-- Customizable data types for inner computations and output. For example, the volume might be uint16, but the output will be np.float32
+- Customizable data types for inner computations and output. For example, the volume data might be `np.uint8`, but the output will be `np.float32`.
 
 ## Caveats
 * Given a 3D volume dataset `vol`, This lean interpolation approach assumes that the coordinates are `0, 1, ... , n_dim` for each dimension. If you want to use a different coordinate system, you will have to do some transformation with respect to this "canonical" coordinate system.
