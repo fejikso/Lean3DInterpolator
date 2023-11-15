@@ -1,9 +1,18 @@
 # LeanVolumeInterpolator
 
 ## Description
-LeanVolumeInterpolator is a Python class designed for efficient trilinear interpolation of 3D volumetric data. It is an alternative to scipy.interpolate.RegularGridInterpolator, which does not work well large datasets stored as numpy memmaps, sparse 3D volumes, and compressed HDF5 datasets.
+LeanVolumeInterpolator is a Python class designed for efficient trilinear interpolation of 3D volumetric data. It offers a practical alternative to `scipy.interpolate.RegularGridInterpolator`, especially for handling large datasets stored as numpy memmaps, sparse 3D volumes, and compressed HDF5 datasets.
 
-I needed to perform arbitrary two-dimensional slices on a 3D volume and I needed something efficient.
+The motivation for developing LeanVolumeInterpolator arose from the need to perform arbitrary two-dimensional slices on a 3D volume, with a focus on efficiency and speed.
+
+### Performance Comparison
+In a benchmark test using a large volume of size (1300, 900, 2300) stored as a memmap on disk, LeanVolumeInterpolator demonstrated significant performance improvements:
+
+- **Task**: Slicing with a two-dimensional _oblique_ (angled, non-orthogonal to volume) plane discretized as a (1000x1000) coordinate grid.
+- **scipy.interpolate.interpn**: Took 2.49 seconds.
+- **LeanVolumeInterpolator**: Completed the task in just 0.29 seconds.
+
+This test showcases LeanVolumeInterpolator's capability to handle these interpolation tasks more efficiently than the standard solutions, particularly for large-scale volumetric data.
 
 ### Background and Motivation
 The development of LeanVolumeInterpolator was inspired by limitations encountered with `scipy.interpolate.RegularGridInterpolator` in handling certain 3D data structures. Specifically, I found the following problems:
