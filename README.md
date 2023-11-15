@@ -17,7 +17,8 @@ As I encountered in some applications, this makes LeanVolumeInterpolator a more 
 ## Features
 - Efficient trilinear interpolation on 3D volumes. Calls to the underlying volume are vectorized, so it's very efficient.
 - Supports various data types including numpy arrays, memmaps, and sparse volumes.
-- Customizable extrapolation values (constant) and data types.
+- Customizable constant extrapolation values (when input coordinates are outside the volume).
+- Customizable data types for inner computations and output. For example, the volume might be uint16, but the output will be np.float32
 
 ## Caveats
 * Given a 3D volume dataset `vol`, This lean interpolation approach assumes that the coordinates are `0, 1, ... , n_dim` for each dimension. If you want to use a different coordinate system, you will have to do some transformation with respect to this "canonical" coordinate system.
