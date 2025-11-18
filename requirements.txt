@@ -1,0 +1,5 @@
+numpy>=1.18.0
+#scipy>=1.5.0 # only necessary for benchmarking
+#h5py>=3.0.0 # only necessary for benchmarking
+#sparse>=0.17.0 # only necessary for sparse benchmarking
+

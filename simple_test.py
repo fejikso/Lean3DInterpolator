@@ -8,7 +8,7 @@ if __name__ == "__main__":
     test_vol = np.random.rand(100, 100, 100)    
 
     # Initialize the LeanVolumeInterpolator
-    lean_interp = LeanVolumeInterpolator(test_vol, extrap_val=np.nan, dtype=np.float32, to_dense=False)
+    lean_interp = LeanVolumeInterpolator(test_vol, extrap_val=np.nan, dtype=np.float32)
 
     # Single coordinate interpolation
     single_val = lean_interp((51.5, 13.1, 10.5))
